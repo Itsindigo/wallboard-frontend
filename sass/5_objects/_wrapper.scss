@@ -1,0 +1,8 @@
+.wrapper {
+    @include clearfix;
+    position: relative;
+    max-width: 940px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    box-sizing: content-box;
+}
