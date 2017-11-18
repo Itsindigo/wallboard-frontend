@@ -13,7 +13,9 @@ const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
 ReactDOM.render(
     <Provider store={createStoreWithMiddleware(reducers)}>
-        <ProjectDashboard />
+        <div className="row">
+            <ProjectDashboard />
+        </div>
     </Provider>
-    , document.querySelector('.container')
+    , document.querySelector('.container-fluid')
 );

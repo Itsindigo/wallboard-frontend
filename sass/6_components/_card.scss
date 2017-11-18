@@ -1,0 +1,43 @@
+.card {
+    height: 140px;
+}
+
+.card h2 {
+    width: 100%;
+    display: block;
+    margin-top: 0px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: arial;
+}
+
+.successful {
+    background: lightgreen;
+}
+
+.unknown {
+    background: cornsilk;
+}
+
+.failed {
+    background: indianred;
+}
+
+.wrapper {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.badge {
+    background-color: #c59665;
+    color: #eee;
+    padding: 10px;
+    margin-top: 2px;
+}
+
+.card h4 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
