@@ -7,7 +7,6 @@ class ProjectDashboard extends Component {
         this.props.fetchProjects();
     }
 
-
     render() {
         return (
             <div>Dashboard</div>
