@@ -5,14 +5,42 @@ import { fetchProjects } from '../actions/index';
 import Project from '../components/project';
 
 class ProjectDashboard extends Component {
+    constructor(props) {
+        super(props);
+ 
+        let itemsPerPage = 4
+
+        this.state = {
+            cycle: 0,
+            itemsPerPage: itemsPerPage,
+            pageTimeOut: 2000,
+            projects: props.fetchProjects()
+        };
+ 
+        this.onTimeOut = this.onTimeOut.bind(this);
+    }
+    
+    
     componentDidMount() {
-        this.props.fetchProjects();
+        this.setState({ totalPages: Math.ceil(this.state.projects.length / this.state.itemsPerPage) })
+        setTimeout(this.onTimeOut, this.state.pageTimeOut);
+    }
+
+    onTimeOut() {
+        if (this.state.cycle >= this.state.totalPages) {
+            this.setState({ cycle: 0 });
+        } else {
+            this.setState({ cycle: this.state.cycle += 1 });
+        }
+        setTimeout(this.onTimeOut, 2000)
     }
 
     renderProjects() {
-        return _.map(this.props.projects, project => {
+        return _.map(this.props.projects[this.state.cycle], project => {
             return (
-                <Project  key={project.uuid} project={project} />
+                <div key={project.uuid} className="col-md-3">
+                    <Project project={project} />
+                </div>
             )
         })        
     }
@@ -20,14 +48,14 @@ class ProjectDashboard extends Component {
     render() {
         if (this.props.projects) {
             return (
-                <div className="col-md-3">
+                <div className="row">
                     {this.renderProjects()}
                 </div>
             );
         }
         return (
             <div>
-                Loading...
+                <span>Loading...</span>
             </div>
         )
     }
