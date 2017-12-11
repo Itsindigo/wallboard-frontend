@@ -2,6 +2,7 @@ var sassLintPlugin = require('sasslint-webpack-plugin');
 
 module.exports = {
     entry: [
+        'babel-polyfill',
         './src/index.js'
     ],
     output: {
